@@ -1,0 +1,64 @@
+{
+    "tasks": [
+        // 任务1：编译当前文件（默认任务）
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc 编译当前文件",
+            "command": "D:\\Cprograming\\MinGW\\w64devkit\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [
+                        "/c",
+                        "chcp 65001 > nul"
+                    ]
+                },
+                "cwd": "D:\\Cprograming\\MinGW\\w64devkit\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "编译当前打开的C/C++文件（UTF-8编码，支持调试）"
+        },
+        // 任务2：编译整个项目（所有.c文件）
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc 编译整个项目", // 唯一label
+            "command": "D:\\Cprograming\\MinGW\\w64devkit\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "${workspaceFolder}/*.c", // 编译工作区所有.c文件
+                "-o",
+                "${workspaceFolder}\\project.exe" // 输出到工作区根目录（固定名project.exe）
+            ],
+            "options": {
+                "shell": {
+                    "executable": "cmd.exe",
+                    "args": [
+                        "/c",
+                        "chcp 65001 > nul"
+                    ]
+                }, // 统一UTF-8
+                "cwd": "D:\\Cprograming\\MinGW\\w64devkit\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "编译工作区所有C文件（适合多文件项目，UTF-8编码）"
+        }
+    ],
+    "version": "2.0.0"
+}
